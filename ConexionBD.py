@@ -4,10 +4,12 @@ import mysql.connector
 
 # Datos de conexión a la base de datos (reemplázalos con tus datos)
 mydb = mysql.connector.connect(
-        host="localhost",
+        host="127.0.0.1",
         user="root", #PONER SU PROPIO USUARIO
         password="", #PONER SU PROPIA CLAVE
+        port=3306,
         database="isaui")
+
 mycursor = mydb.cursor()
 
 def insertar_persona(apellido,nombre,dni,telefono,correo,domicilio,ciudad,instagram,carrera):
