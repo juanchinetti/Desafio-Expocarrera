@@ -44,22 +44,29 @@ for i, carrera in enumerate(["Guía de Turismo", "Técnico en Turismo", "Trekkin
     filtro_carrera.grid(row=row, column=col, sticky="nsew", padx=10, pady=10)  #configuración de grid
 
 #Tabla Treeview
+# Configurar el árbol
 arbol = ttk.Treeview(frame_inferior, columns=("apellido", "nombre", "dni", "carrera"), show="headings")
 arbol.grid(row=0, column=0, sticky="nsew")
 
-#Encabezados de la tabla
 arbol.heading("apellido", text="Apellido")
 arbol.heading("nombre", text="Nombre")
 arbol.heading("dni", text="DNI")
 arbol.heading("carrera", text="Carrera")
 
-#Datos de ejemplo
 arbol.insert("", "end", values=("Pérez", "Juan", "12345678", "Software"))
 arbol.insert("", "end", values=("González", "María", "87654321", "Enfermería"))
 arbol.insert("", "end", values=("Rodríguez", "Pedro", "34567890", "Técnico en Turismo"))
 
+# Permitir que el Treeview se expanda
+frame_inferior.rowconfigure(0, weight=1)
+frame_inferior.columnconfigure(0, weight=1)
+
+#Botón registrar
+btn_volver = tk.Button(root, text="Registro", bg="lightgray", font=("Calibri", 15))
+btn_volver.grid(row=3, column=0, padx=(200,600), pady=20, ipadx=40)
+
 #Botón Volver
 btn_volver = tk.Button(root, text="Volver", bg="lightgray", font=("Calibri", 15), command=volver)
-btn_volver.grid(row=3, column=0, padx=10, pady=20, ipadx=40, sticky="nsew")  #Configuración del botón
+btn_volver.grid(row=3, column=0, padx=(500,100), pady=20, ipadx=40)  #Configuración del botón
 
 root.mainloop()

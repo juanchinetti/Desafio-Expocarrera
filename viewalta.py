@@ -6,7 +6,8 @@ from ConexionBD import *
 ventana = Tk()
 ventana.title("Formulario de contacto para ISAUI")
 ventana.geometry("1366x768")
-ventana.configure(bg="#b39658")
+ventana.attributes("-fullscreen", True) #se puede quitar y funciona correctamente la selección de la resolución 
+ventana.configure(bg="#d7cfbf")
 ventana.resizable(False, False)
 
 variable = IntVar()
@@ -55,7 +56,7 @@ def guardar_datos():
 def procesar_formulario():
     apellido, nombre, dni, telefono, correo, domicilio, ciudad, instagram = getEntradasUsuario()
     
-    if apellido, nombre, dni:  #Simple validación de que algunos campos no estén vacíos
+    if (apellido, nombre, dni):  #Simple validación de que algunos campos no estén vacíos
         insertar_persona(apellido, nombre, dni, telefono, correo, domicilio, ciudad, instagram)
     else:
         messagebox.showerror("Error", "Todos los campos son obligatorios")
@@ -66,65 +67,63 @@ def volver():
 
 #marco
 frame = LabelFrame(ventana, text="Seleccione la carrera", bg="white", font=('Calibri', 20), borderwidth=5)
-frame.grid(row=0, column=0, padx=60, pady=50, columnspan=9, sticky="ew")
+frame.grid(row=0, column=0,padx=60, pady=50, columnspan=8, sticky="ew")
 
-frame_datos = LabelFrame(ventana, text="Ingrese sus datos:", bg="#dbc79c", font=('Calibri', 20), borderwidth=5)
-frame_datos.grid(row=1, column=0, padx=60, pady=50, columnspan=9, ipadx=100, ipady=10, sticky="ew")
+frame_datos = LabelFrame(ventana, text="Ingrese sus datos:", bg="#cac5bc", font=('Calibri', 20), borderwidth=5)
+frame_datos.grid(row=1,padx=60, column=0,columnspan=8, pady=30, sticky="nsew")
 
 #Para que ambos frames tengan el mismo ancho
-ventana.columnconfigure(0, weight=1)
-frame.grid_columnconfigure(0, weight=1)
-frame_datos.grid_columnconfigure(0, weight=1)
+
 
 #etiquetas 
-label_apellido = Label(frame_datos, text="Apellido: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_apellido.grid(row=1, column=1, pady=10)
+label_apellido = Label(frame_datos, text="Apellido: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_apellido.grid(row=2, column=0, pady=10, ipadx=100)
 
-label_nombre = Label(frame_datos, text="Nombre: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_nombre.grid(row=2, column=1, pady=10)
+label_nombre = Label(frame_datos, text="Nombre: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_nombre.grid(row=3, column=0, pady=10, ipadx=100)
 
-label_dni = Label(frame_datos, text="DNI: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_dni.grid(row=3, column=1, pady=10)
+label_dni = Label(frame_datos, text="DNI: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_dni.grid(row=4, column=0, pady=10, ipadx=100,)
 
-label_telefono = Label(frame_datos, text="Teléfono: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_telefono.grid(row=4, column=1, pady=10)
+label_telefono = Label(frame_datos, text="Teléfono: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_telefono.grid(row=5, column=0, pady=10, ipadx=100)
 
-label_domicilio = Label(frame_datos, text="Domicilio: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_domicilio.grid(row=5, column=1, pady=10)
+label_domicilio = Label(frame_datos, text="Domicilio: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_domicilio.grid(row=6, column=0, pady=10, ipadx=100)
 
-label_ciudad = Label(frame_datos, text="Ciudad: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_ciudad.grid(row=6, column=1, pady=10)
+label_ciudad = Label(frame_datos, text="Ciudad: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_ciudad.grid(row=7, column=0, pady=10, ipadx=100)
 
-label_correo = Label(frame_datos, text="Correo: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_correo.grid(row=7, column=1, pady=10)
+label_correo = Label(frame_datos, text="Correo: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_correo.grid(row=8, column=0, pady=10, ipadx=100)
 
-label_instagram = Label(frame_datos, text="Instagram: ", bg="#dbc79c", fg="black", font=('Calibri', 15))
-label_instagram.grid(row=8, column=1, pady=10)
+label_instagram = Label(frame_datos, text="Instagram: ", bg="#cac5bc", fg="black", font=('Calibri', 15))
+label_instagram.grid(row=9, column=0, pady=10, ipadx=100)
 
 #entradas
 entry_apellido = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_apellido.grid(row=1, column=2, ipadx=400)
+entry_apellido.grid(row=2, column=1, ipadx=330, pady=10,columnspan=5)
 
 entry_nombre = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_nombre.grid(row=2, column=2, ipadx=400)
+entry_nombre.grid(row=3, column=1, ipadx=330,pady=10, columnspan=5)
 
 entry_dni = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_dni.grid(row=3, column=2, ipadx=400)
+entry_dni.grid(row=4, column=1, ipadx=330,pady=10, columnspan=5)
 
 entry_telefono = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_telefono.grid(row=4, column=2, ipadx=400)
+entry_telefono.grid(row=5, column=1, ipadx=330,pady=10, columnspan=5)
 
 entry_domicilio = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_domicilio.grid(row=5, column=2, ipadx=400)
+entry_domicilio.grid(row=6, column=1, ipadx=330,pady=10, columnspan=5)
 
 entry_ciudad = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_ciudad.grid(row=6, column=2, ipadx=400)
+entry_ciudad.grid(row=7, column=1, ipadx=330,pady=10, columnspan=5)
 
 entry_correo = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_correo.grid(row=7, column=2, ipadx=400)
+entry_correo.grid(row=8, column=1, ipadx=330,pady=10, columnspan=5)
 
 entry_instagram = Entry(frame_datos, bg="white", font=('Calibri', 15))
-entry_instagram.grid(row=8, column=2, ipadx=400)
+entry_instagram.grid(row=9, column=1, ipadx=330,pady=10, columnspan=5)
 
 #radio botones
 btn_software = Radiobutton(frame, text="Desarrollo de Software", variable=variable, value=1, borderwidth=2, bg="white", font=('Calibri', 13))
@@ -146,11 +145,11 @@ btn_guia_turismo_hoteleria = Radiobutton(frame, text="Guía de Turismo y Hoteler
 btn_guia_turismo_hoteleria.grid(row=1, column=7, padx=10, pady=10)
 
 #botón Guardar
-btn_guardar = Button(ventana, text="Guardar", borderwidth=2, bg="#ffffff", font=('Calibri', 15), command=guardar_datos)
-btn_guardar.grid(row=3, column=0, padx=10, pady=20, ipadx=40)
+btn_guardar = Button(frame_datos, text="Guardar", borderwidth=2, bg="#589cf9", font=('Calibri', 15), command=guardar_datos)
+btn_guardar.grid(row=10, column=2, padx=10, pady=10, ipadx=20, sticky="ew")
 
 #botón Volver
-btn_volver = Button(ventana, text="Volver", borderwidth=2, bg="#ffffff", font=('Calibri', 15), command=volver)
-btn_volver.grid(row=3, column=1, padx=10, pady=20, ipadx=40)
+btn_volver = Button(frame_datos, text="Volver", borderwidth=2, bg="#ffffff", font=('Calibri', 15), command=volver)
+btn_volver.grid(row=10, column=4, padx=10, pady=10, ipadx=20, sticky="ew")
 
 ventana.mainloop()
